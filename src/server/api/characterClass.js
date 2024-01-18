@@ -1,7 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = require("express").Router();
-const prisma = require('../client');
-
+const prisma = require("../client");
 
 // GET /api/characterclass //
 router.get("/", async (req, res, next) => {
@@ -16,24 +15,20 @@ router.get("/", async (req, res, next) => {
 
 // GET /api/character-class/:id //
 router.get("/:id", async (req, res, next) => {
-  const { id } = req.params
-  console.log(id)
+  const { id } = req.params;
+  console.log(id);
   try {
     const user = await prisma.character_Class.findUnique({
-      where: { id:+id, }
+      where: { id: +id },
     });
-  res.send(user)
+    res.send(user);
   } catch (error) {
     console.log(error);
   }
-  next()
-}); 
-
+  next();
+});
 
 //***********   the below should work for api features when route is confirmed +++++++++++++++++++ */
-
-
-
 
 // router.delete("/:id", async (req, res, next) => {
 //   // grab the id from the Url
@@ -59,10 +54,10 @@ router.get("/:id", async (req, res, next) => {
 //     const characterClass = await prisma.user.create({
 //       data: {
 //         name,
-//         description, 
-//         beginning_attack, 
-//         beginning_armor, 
-//         beginning_speed, 
+//         description,
+//         beginning_attack,
+//         beginning_armor,
+//         beginning_speed,
 //         beginning_hp
 //       },
 //     });

@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = require("express").Router();
-const prisma = require('../client');
+const prisma = require("../client");
 
 // GET /api/character
 // Gets all characters
@@ -11,20 +11,20 @@ router.get("/", async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-}); 
+});
 
 router.get("/:id", async (req, res, next) => {
-  const { id } = req.params
-  console.log(id)
+  const { id } = req.params;
+  console.log(id);
   try {
     const user = await prisma.character.findUnique({
-      where: { id:+id, }
+      where: { id: +id },
     });
-  res.send(user)
+    res.send(user);
   } catch (error) {
     console.log(error);
   }
-  next()
-}); 
+  next();
+});
 
 module.exports = router;
