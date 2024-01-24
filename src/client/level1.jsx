@@ -17,6 +17,7 @@ export class Level1 extends Phaser.Scene {
     this.chest2;
     this.cursors;
     this.gameOver=false;
+    this.monster;
     // this.gold;
     // this.characterGold= 4;
     }
@@ -35,6 +36,8 @@ export class Level1 extends Phaser.Scene {
       this.load.spritesheet('fighter', 'assets/fighter.png', { frameWidth: 32, frameHeight: 48 });
       this.load.spritesheet('chest', 'assets/chest_sprite.png', {frameWidth: 32, frameHeight: 32 })
       this.load.spritesheet('goldCoin', 'assets/goldCoin.png', {frameWidth: 40, frameHeight: 40})
+      this.load.spritesheet('plent', 'assets/plent_spritelist.png', {frameWidth: 48, frameHeight: 48})
+
   
   }
   
@@ -94,6 +97,13 @@ export class Level1 extends Phaser.Scene {
         p: Phaser.Input.Keyboard.KeyCodes.P,
     
        });
+
+       //monster and its settings
+       this.monster = this.physics.add.sprite(300,300, 'plent');
+
+       //keep monster in bounds
+       this.monster.setCollideWorldBounds(true);
+       this.physics.add.collider(this.monster, WorldLayer);
   
        this.collectItem = (item) => {
         console.log('collecting item function');
@@ -201,6 +211,24 @@ export class Level1 extends Phaser.Scene {
             this.scene.pause("LEVEL1");
             this.scene.launch("PAUSE");
       }
+
+      //monster movement
+  this.monster.setVelocity(40);
+
+  // Horizontal movement
+  if (this.cursors.left.isDown || this.keys.a.isDown) {
+    this.monster.setVelocityX(-80);
+  } else if (this.cursors.right.isDown || this.keys.d.isDown) {
+    this.monster.setVelocityX(80);
+  }
+
+  // Vertical movement
+  if (this.cursors.up.isDown || this.keys.w.isDown) {
+    this.monster.setVelocityY(-80);
+  } else if (this.cursors.down.isDown || this.keys.s.isDown) {
+    this.monster.setVelocityY(80);
+  }
+}
   
   }
   
