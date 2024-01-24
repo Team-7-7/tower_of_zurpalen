@@ -3,7 +3,6 @@ const prisma = new PrismaClient()
 
 const monsters =[
     {
-        id:1,
         name:'slime',
         description:'A slime',
         base_attack:10,
@@ -11,7 +10,7 @@ const monsters =[
         base_armor:10,
         level:1,
         attack_name:'slime attack',
-        graphicURL:'',
+        graphicUrl:'',
         xp_base_value:10,
         maxHP:10,
         currentHP:10,
@@ -20,7 +19,6 @@ const monsters =[
 
     },
     {
-        id:2,
         name:'goblin',
         description:'A goblin',
         base_attack:10,
@@ -28,7 +26,7 @@ const monsters =[
         base_armor:10,
         level:1,
         attack_name:'goblin attack',
-        graphicURL:'',
+        graphicUrl:'',
         xp_base_value:10,
         maxHP:10,
         currentHP:10,
@@ -37,7 +35,6 @@ const monsters =[
 
     },
     {
-        id:3,
         name:'orc',
         description:'A orc',
         base_attack:10,
@@ -45,7 +42,7 @@ const monsters =[
         base_armor:10,
         level:1,
         attack_name:'orc attack',
-        graphicURL:'',
+        graphicUrl:'',
         xp_base_value:10,
         maxHP:10,
         currentHP:10,
@@ -54,7 +51,6 @@ const monsters =[
 
     },
     {
-        id:4,
         name:'troll',
         description:'A troll',
         base_attack:10,
@@ -62,7 +58,7 @@ const monsters =[
         base_armor:10,
         level:1,
         attack_name:'troll attack',
-        graphicURL:'',
+        graphicUrl:'',
         xp_base_value:10,
         maxHP:10,
         currentHP:10,
@@ -71,7 +67,6 @@ const monsters =[
 
     },
     {
-        id:5,
         name:'dragon',
         description:'A dragon',
         base_attack:10,
@@ -79,7 +74,7 @@ const monsters =[
         base_armor:10,
         level:1,
         attack_name:'dragon attack',
-        graphicURL:'',
+        graphicUrl:'',
         xp_base_value:10,
         maxHP:10,
         currentHP:10,
@@ -97,7 +92,7 @@ const createMonster = async () => {
 
 };
 
-main()
+createMonster()
 .then(async () => {
     await prisma.$disconnect()
     console.log("done");

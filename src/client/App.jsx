@@ -13,16 +13,20 @@ import CharacterSelection from './CharacterSelection';
 
 const App = () => {
 
+
+
   return (
     <>
       <section id="header"> <Header /> </section>
 
       <section id="navigation"> <Navigation /> </section>
 
-      <section id="main">
+      {/* <section id="main" > */}
+      <section>
+
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About/>} />
+          <Route id="main-section" path='/' element={<Home />}  />
+          <Route path='/about' element={<About/>}  />
           <Route path='/admin' element={<Admin />} />
           <Route path='/character' element={<CharacterSelection />} />
           <Route path='/game' element={<Game />} />
@@ -41,3 +45,4 @@ const App = () => {
 }
 
 export default App;
+

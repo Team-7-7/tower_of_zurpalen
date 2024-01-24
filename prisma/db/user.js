@@ -1,21 +1,40 @@
-const {PrismaClient} = require('@prisma/client');
-const prisma = new PrismaClient()
+const prisma = require('../../src/server/client');
+const bcrypt = require('bcrypt');
+const saltRounds = 7;
 
-const users =[
-    {
-        id:1,
-        username:'sal',
-        password:'password',
-        isAdmin:false,
-        isBanned:false,
-        createdAt: Date, Time,
-        characterid:1,
-        phone:'555-555-5555'
-    }
-]
+
+const hasher = async (password, salt) => {
+    const data = await bcrypt.hash(password, salt)
+    return data;
+}
 
 const createUser = async () => {
     console.log('createUser');
+
+    const hashedPassword = await hasher("password", saltRounds);
+    const hashedPizza = await hasher("pizza", saltRounds);
+
+    const users =[
+        {
+            username:'sal',
+            password:hashedPassword,
+            isAdmin:false,
+            isBanned:false,
+            character_id:1,
+            phone:555555555,
+            email:'sal@sal.com'
+        },
+    
+        {
+            username:'nickgo',
+            password:hashedPizza,
+            isAdmin:true,
+            isBanned:false,
+            character_id:2,
+            phone:2121234567,
+            email:'x@nickgolebiewski.com'
+        }
+    ]
 
     await prisma.user.createMany({
         data:users
@@ -25,7 +44,7 @@ const createUser = async () => {
 
 
 
-main()
+createUser()
 .then(async () => {
     await prisma.$disconnect()
     console.log("done");
