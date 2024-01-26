@@ -1,12 +1,11 @@
-
 import Phaser from 'phaser';
+import WebFont from 'webfontloader';
 import {Level1} from './level1';
 import {Load} from "./loading_menu/LoadingScene.jsx"
 import {Menu} from './loading_menu/MenuScene';
 import {PauseScene} from './pauseScene';
 import {LoginScene} from './loading_menu/Login_Phaser.jsx';
 import { CST } from './loading_menu/CST.jsx';
-import WebFont from 'webfontloader';
 
 const PhaserGame = () => {
   var config = {
@@ -17,7 +16,7 @@ const PhaserGame = () => {
     // line required fr use of dom elements
     dom: {
       createContainer: true
-  },
+    },
     physics: {
         default: 'arcade',
         arcade: {
@@ -25,25 +24,22 @@ const PhaserGame = () => {
         }
     },
     scene:[ LoginScene, Load, Menu, Level1, PauseScene]
-    // scene:[ Load, Menu, Level1, PauseScene]
+  };
+
+
+  WebFont.load({
+    custom: {
+        families: ['p-script', 'pixle script bold']
+    },
+    active: function() {
+        console.log('font loaded');
+        // Once the fonts are loaded, start the Phaser game
+        var game = new Phaser.Game(config);
+    }
+  });
   
-
-    };
-    
-    // var game = new Phaser.Game(config);
-    WebFont.load({
-      custom: {
-          families: ['p-script', 'pixle script bold']
-      },
-      active: function() {
-          console.log('font loaded');
-          // Once the fonts are loaded, start the Phaser game
-          var game = new Phaser.Game(config);
-      }
-    });
-
-    return <div id="phaser-game"></div>;
-    };
-    
+//old code
+  return <div id="phaser-game"></div>;
+};
 
 export default PhaserGame;
