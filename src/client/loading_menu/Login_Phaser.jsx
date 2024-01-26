@@ -14,7 +14,7 @@ export class LoginScene extends Phaser.Scene {
 
     init(data) {
         console.log("init", data)
-        // console.log("init", data.text)
+        
     }
 
     preload() {
