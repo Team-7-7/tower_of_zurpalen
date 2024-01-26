@@ -4,7 +4,6 @@ import {Level1} from './level1';
 import {Load} from "./loading_menu/LoadingScene.jsx"
 import {Menu} from './loading_menu/MenuScene';
 import {PauseScene} from './pauseScene';
-
 import {LoginScene} from './loading_menu/Login_Phaser.jsx';
 import { CST } from './loading_menu/CST.jsx';
 
@@ -26,6 +25,7 @@ const PhaserGame = () => {
     },
     scene:[ LoginScene, Load, Menu, Level1, PauseScene]
   };
+
 
   WebFont.load({
     custom: {
