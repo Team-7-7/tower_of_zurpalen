@@ -37,6 +37,7 @@ const PhaserGame = () => {
         var game = new Phaser.Game(config);
     }
   });
+  
 //old code
   return <div id="phaser-game"></div>;
 };
